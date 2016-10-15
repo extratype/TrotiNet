@@ -19,21 +19,27 @@ namespace TrotiNet.Test
         }
 
         [Test]
-        [ExpectedException(typeof(IoBroken))]
         static public void TestBrokenHttpHeaders1()
         {
-            // Missing empty line
-            var incomplete = "Host:www.crunchy.frog\r\n";
-            /*var hh = */TcpCommon.ParseHttpHeaders(incomplete);
+            Assert.Throws<IoBroken>(() =>
+            {
+                // Missing empty line
+                var incomplete = "Host:www.crunchy.frog\r\n";
+                /*var hh = */
+                TcpCommon.ParseHttpHeaders(incomplete);
+            });
         }
 
         [Test]
-        [ExpectedException(typeof(HttpProtocolBroken))]
         static public void TestBrokenHttpHeaders2()
         {
-            // Not a proper key:value entry
-            var incomplete = "Buzz Lightyear\r\n\r\n";
-            /*var hh = */TcpCommon.ParseHttpHeaders(incomplete);
+            Assert.Throws<HttpProtocolBroken>(() =>
+            {
+                // Not a proper key:value entry
+                var incomplete = "Buzz Lightyear\r\n\r\n";
+                /*var hh = */
+                TcpCommon.ParseHttpHeaders(incomplete);
+            });
         }
 
         [Test]
