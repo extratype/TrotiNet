@@ -6,13 +6,13 @@ namespace TrotiNet.Test
     [TestFixture]
     partial class TestTCPv4
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         static public void FixtureSetUp()
         {
             TcpCommon.Setup(false);
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         static public void FixtureTearDown()
         {
             TcpCommon.TearDown();
@@ -235,13 +235,13 @@ namespace TrotiNet.Test
     [TestFixture]
     class TestTCPv6
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         static public void FixtureSetUp()
         {
             TcpCommon.Setup(true);
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         static public void FixtureTearDown()
         {
             TcpCommon.TearDown();
